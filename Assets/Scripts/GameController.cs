@@ -14,7 +14,8 @@ public class GameController : MonoBehaviour
         _contexts = Contexts.sharedInstance;
         _systems = new Systems()
                 .Add(new PrefabInstantiateSystem(_contexts))
-                //.Add(new InitializeGameSystem(_contexts))
+                .Add(new InitializeGameSystem(_contexts))
+                .Add(new TransformApplySystem(_contexts))
                 
             ;
         _systems.Initialize();

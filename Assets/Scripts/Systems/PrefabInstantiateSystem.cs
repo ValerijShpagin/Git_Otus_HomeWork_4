@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PrefabInstantiateSystem : ReactiveSystem<GameEntity>
 {
-    Contexts contexts;
+    Contexts _contexts;
 
     public PrefabInstantiateSystem(Contexts contexts)
         : base(contexts.game)
     {
-        this.contexts = contexts;
+        this._contexts = contexts;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -25,7 +25,7 @@ public class PrefabInstantiateSystem : ReactiveSystem<GameEntity>
     }
 
     protected override void Execute(List<GameEntity> entities)
-    {Debug.Log("111");
+    {
         foreach (var e in entities)
             e.AddView(GameObject.Instantiate(e.prefab.prefab));
     }
